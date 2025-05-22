@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 #include <vector>
+#include <iomanip>
 
 // Esto es para acumular puntos, no sé que nombre ponerle
 class Sistema {
@@ -12,22 +13,25 @@ class Fruta {
 };
 
 class Carne {
-  private:
-    string lugarSacrificio;
+  protected:
+     double libra;
+     int unidad;
   public:
-  Carne(string _lugarSacrificio): lugarSacrificio(_lugarSacrificio){}
 };
 
 class Pollo: public Carne{
-
+  private:
+    string lugarSacrificio;
 };
 
 class Cerdo: public Carne{
-
+ private:
+    string lugarSacrificio;
 };
 
 class Pescado: public Carne{
-
+ private:
+    string lugarProcedencia;
 };
 
 
@@ -40,7 +44,10 @@ class ArtIndividuales {
 };
 
 class Productor{
-
+  private:
+  vector<Pollo*> pollo;
+  vector<Cerdo*> cerdo;
+  vector<Pescado*> pescado;
 };
 
 int main(){
