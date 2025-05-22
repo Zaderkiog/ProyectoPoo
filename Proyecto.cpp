@@ -1,11 +1,14 @@
 #include <iostream>
-using namespace std;
 #include <vector>
 #include <iomanip>
+#include <fstream>
+using namespace std;
 
 // Esto es para acumular puntos, no sé que nombre ponerle
 class Sistema {
-
+  private:
+  
+  getFactura(){}
 };
 
 class Fruta {
@@ -48,6 +51,11 @@ class Productor{
   vector<Pollo*> pollo;
   vector<Cerdo*> cerdo;
   vector<Pescado*> pescado;
+  public:
+  Productor(){}
+
+  setProductos(){}
+  
 };
 
 int main(){
