@@ -9,17 +9,23 @@ class Persona {
      string nombre;
      int identi;
      string direccion;
+    public:
+    Persona(string _nombre, int _identi, string _direccion): nombre(_nombre), identi(_identi), direccion(_direccion){}
 };
 
 class Usuario: public Persona{
     private:
     int puntos;
+    public:
+    Usuario(string _nombre, int _identi, string _direccion, int _puntos): Persona(_nombre, _identi, _direccion){}
 };
 
 // Esto es para acumular puntos, no sé que nombre ponerle
 class Sistema {
   private:
     vector<Usuario*> u;
+  public:
+  Sistema(string _nombre, int _identi, string _direccion, Usuario _u): Usuario(_nombre, _identi, _direccion){}
   
   getFactura(){}
   
