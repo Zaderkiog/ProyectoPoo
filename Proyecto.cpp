@@ -4,11 +4,28 @@
 #include <fstream>
 using namespace std;
 
+class Persona {
+    private:
+     string nombre;
+     int identi;
+     string direccion;
+};
+
+class Usuario: public Persona{
+    private:
+    int puntos;
+};
+
 // Esto es para acumular puntos, no sé que nombre ponerle
 class Sistema {
   private:
+    vector<Usuario*> u;
   
   getFactura(){}
+  
+  setReporte(){}
+
+  sorteo(){}
 };
 
 class Fruta {
