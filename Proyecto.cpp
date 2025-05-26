@@ -85,7 +85,7 @@ class Productor{
   public:
   Productor(){}
 
-  setProductos(){}
+  void setProductos(){}
   
 };
 
