@@ -25,7 +25,7 @@ class Sistema {
   private:
     vector<Usuario*> u;
   public:
-  Sistema(string _nombre, int _identi, string _direccion, Usuario _u): Usuario(_nombre, _identi, _direccion){}
+  Sistema(){}
   
   getFactura(){}
   
