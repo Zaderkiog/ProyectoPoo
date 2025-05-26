@@ -36,7 +36,7 @@ class Sistema {
   void setReporte(){}
 
   void setAcumularpuntos(Usuario* u, int puntos){
-    u->setPuntos();
+    u->setPuntos(puntos);
   }
   
   void sorteo(){}
