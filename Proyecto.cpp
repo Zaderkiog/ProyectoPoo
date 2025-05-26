@@ -18,6 +18,10 @@ class Usuario: public Persona{
     int puntos;
     public:
     Usuario(string _nombre, int _identi, string _direccion, int _puntos): Persona(_nombre, _identi, _direccion){}
+
+    void setPuntos(int p){
+        p = puntos;
+    }
 };
 
 // Esto es para acumular puntos, no sé que nombre ponerle
@@ -27,11 +31,15 @@ class Sistema {
   public:
   Sistema(){}
   
-  getFactura(){}
+  void getFactura(){}
   
-  setReporte(){}
+  void setReporte(){}
 
-  sorteo(){}
+  void setAcumularpuntos(Usuario* u, int puntos){
+    u->setPuntos();
+  }
+  
+  void sorteo(){}
 };
 
 class Fruta {
