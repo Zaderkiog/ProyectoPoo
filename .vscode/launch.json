@@ -2,11 +2,15 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "node",
+            "name": "(Windows) Launch",
+            "type": "cppvsdbg",
             "request": "launch",
-            "name": "Launch Program",
-            "skipFiles": ["<node_internals>/**"],
-            "program": "${workspaceFolder}\\app.js"
+            "program": "audioMatrixBin.exe",
+            "args": ["AudioMxrMgr4Subaru.conf"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": true
         }
     ]
 }
