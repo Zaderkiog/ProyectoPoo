@@ -1,13 +1,15 @@
-#ifdef PERSONA_H
+#ifndef PERSONA_H
 #define PERSONA_H
 
 class Persona {
     private:
-     string nombre;
+     std::string nombre;
      int identi;
-     string direccion;
+     std::string direccion;
     public:
-    Persona(string _nombre, int _identi, string _direccion): nombre(_nombre), identi(_identi), direccion(_direccion){}
+    Persona(std::string _nombre, int _identi, std::string _direccion): nombre(_nombre), identi(_identi), direccion(_direccion){}
+
+    void getDatos();
 };
 
 #endif

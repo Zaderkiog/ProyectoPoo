@@ -1,3 +1,5 @@
 #include "../data/usuario.h"
 
-void Usuario::setPuntos(int p){ puntos = p;}
+int Usuario::getPuntos() {
+    return puntos;
+}

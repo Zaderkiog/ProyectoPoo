@@ -4,29 +4,9 @@
 #include <windows.h>
 #include <iomanip>
 #include <fstream>
+#include "data/persona.h"
+#include "data/usuario.h"
 using namespace std;
-
-class Persona {
-    private:
-     string nombre;
-     int identi;
-     string direccion;
-    public:
-    Persona(string _nombre, int _identi, string _direccion): nombre(_nombre), identi(_identi), direccion(_direccion){}
-};
-
-class Usuario: public Persona{
-    private:
-    int puntos;
-    public:
-    Usuario(string _nombre, int _identi, string _direccion, int _puntos): Persona(_nombre, _identi, _direccion), puntos(_puntos){}
-
-    void setPuntos(int p){
-        puntos = p;
-    }
-
-    int getPuntos(){ return puntos; }
-};
 
 void setColor(int color) {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
