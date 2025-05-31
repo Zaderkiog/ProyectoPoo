@@ -115,15 +115,75 @@ class Sistema {
       cout << "Puntos: " << puntos << endl;
       cout << "==========================" << endl;
    }
+};
 
+
+   void display(int x, int y, int digito) {
+
+    const char* digitos[10][5] = {
+        {" **** ", "*    *", "*    *", "*    *", " **** "}, // 0
+        {"  *   ", " **   ", "  *   ", "  *   ", " ***  "}, // 1
+        {" **** ", "    * ", "   *  ", "  *   ", " *****"}, // 2
+        {" **** ", "    * ", "  *** ", "    * ", " **** "}, // 3
+        {"*   * ", "*   * ", " *****", "    * ", "    * "}, // 4
+        {"***** ", "*     ", "****  ", "    * ", "****  "}, // 5
+        {"  ****", " *    ", "****  ", "*    *", " **** "}, // 6
+        {"***** ", "    * ", "   *  ", "  *   ", " *    "}, // 7
+        {" **** ", "*    *", " **** ", "*    *", " **** "}, // 8
+        {" **** ", "*    *", " *****", "    * ", " **** "}  // 9
+    };
+
+    setColor(9); // Cyan
+    for(int i = 0; i < 5; i++) {
+        gotoxy(x, y + i);
+        cout << digitos[digito][i];
+    }
+};
+
+void gotoxy(int x, int y) {
+    COORD coord;
+    coord.X = x;
+    coord.Y = y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 };
 
 int main(){
- while(true){
-  setColor(4);
-  cout <<"===================" << endl;
-  setColor(9);
-  cout << "This is the menu. " << endl;
-  system("pause");
- }
-};
+ int tecla;
+ int seleccionada;
+ int opcion;
+    while (true) {
+        system("cls");
+        setColor(11);
+        cout << "==== MENU PRINCIPAL ====" << endl;
+        setColor(9);
+
+        gotoxy(3, 3);
+        if(seleccionada == 1){
+         setColor(5);
+       }else {
+       setColor(4);
+       }
+        cout << "1. Gestionar productos" << endl;
+        cout << "2. Ingreso de productos al inventario" << endl;
+        cout << "3. Carga masiva de productos desde archivo" << endl;
+        cout << "4. Crear factura" << endl;
+        cout << "5. Buscar producto por código y vender" << endl;
+        cout << "6. Crear reporte de inventario en archivo" << endl;
+        cout << "7. Visualizar usuarios y puntos" << endl;
+        cout << "8. Realizar sorteo con clientes por puntos" << endl;
+        cout << "9. Acciones restringidas por clave" << endl;
+        cout << "10. Ver total vendido y ganancias netas" << endl;
+        cout << "0. Salir" << endl;
+
+    Sleep(50);
+    tecla = getch();
+
+    if(tecla == 72){
+        seleccionada--;
+    } else if(tecla == 80){
+       seleccionada++;
+    } else if(tecla == 13){
+        display(30, 5, seleccionada);
+    }
+    }
+}
