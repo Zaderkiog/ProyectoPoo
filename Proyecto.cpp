@@ -17,7 +17,7 @@ class Usuario: public Persona{
     private:
     int puntos;
     public:
-    Usuario(string _nombre, int _identi, string _direccion, int _puntos): Persona(_nombre, _identi, _direccion){}
+    Usuario(string _nombre, int _identi, string _direccion, int _puntos): Persona(_nombre, _identi, _direccion), puntos(_puntos){}
 
     void setPuntos(int p){
         puntos = p;
@@ -26,23 +26,6 @@ class Usuario: public Persona{
     int getPuntos(){ return puntos; }
 };
 
-// Esto es para acumular puntos, no sé que nombre ponerle
-class Sistema {
-  private:
-    vector<Usuario*> u;
-  public:
-  Sistema(){}
-  
-  void getFactura(){}
-  
-  void setReporte(){}
-
-  void setAcumularpuntos(Usuario* u, int puntos){
-    u->setPuntos(puntos);
-  }
-  
-  void sorteo(){}
-};
 
 class Producto {
   protected:
@@ -62,7 +45,7 @@ class Producto {
   }
 
   virtual double calcularIva() const {
-    return noIva ? 0 : calcularPrecio() * 0.8;
+    return noIva ? 0 : calcularPrecio() * 0.19;
   }
 
   void setCantidadVendida(double _cantidadVendida){
@@ -105,14 +88,17 @@ class Carne : public Producto {
    }
 };
 
-class Factura {
+class Sistema {
    private:
+   Usuario* cliente;
    vector<Producto*> productos;
    double totalSinIVA = 0;
    double totalIVA = 0;
    double totalFinal = 0;
    int puntos = 0;
    public:
+       Sistema(Usuario* _cliente, vector<Producto*> _productos, double _totalSinIVA, double _totalIVA, double _totalFinal)
+        : cliente(_cliente), productos(_productos), totalSinIVA(_totalSinIVA), totalIVA(_totalIVA), totalFinal(_totalFinal) {}
 
    void agregarProductos(Producto* _productos, double cantidad) {
       _productos->setCantidadVendida(cantidad);
@@ -126,6 +112,9 @@ class Factura {
      }
 
      totalFinal = totalIVA + totalSinIVA;
+
+     int puntosActuales = cliente->getPuntos();
+     cliente->setPuntos(puntosActuales + puntos) 
    }
 
    void MostrarFactura(){
@@ -139,18 +128,10 @@ class Factura {
       cout << "Subtotal: " << endl;
       cout << "Total IVA: " << endl;
       cout << "Total a pagar: " << totalFinal << setprecision(3) << endl;
+      cout << "Puntos: " << puntos << endl;
+      cout << "==========================" << endl;
    }
 
-};
-
-class Productor{
-  private:
-
-  public:
-  Productor(){}
-
-  void setProductos(){}
-  
 };
 
 int main(){
