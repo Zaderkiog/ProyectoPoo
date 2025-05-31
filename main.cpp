@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <conio.h>
+#include <windows.h>
 #include <iomanip>
 #include <fstream>
 using namespace std;
@@ -26,6 +28,9 @@ class Usuario: public Persona{
     int getPuntos(){ return puntos; }
 };
 
+void setColor(int color) {
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+};
 
 class Producto {
   protected:
@@ -113,7 +118,7 @@ class Sistema {
      totalFinal = totalIVA + totalSinIVA;
 
      int puntosActuales = cliente->getPuntos();
-     cliente->setPuntos(puntosActuales + puntos) 
+     cliente->setPuntos(puntosActuales + puntos);
    }
 
    void MostrarFactura(){
@@ -134,5 +139,9 @@ class Sistema {
 };
 
 int main(){
-
+ while(true){
+  cout <<"===================" << endl;
+  setColor(9);
+  cout << "This is the menu. " << endl;
+ }
 };
