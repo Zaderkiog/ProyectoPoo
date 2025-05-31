@@ -65,6 +65,10 @@ class Producto {
     return noIva ? 0 : calcularPrecio() * 0.8;
   }
 
+  void setCantidadVendida(double _cantidadVendida){
+    this->cantidadVendida = _cantidadVendida;
+  }
+
   virtual void mostrarDetalle() const {
         cout << nombre << " - " << cantidadVendida << (porPeso ? " lb" : " u") << " - $" << fixed << setprecision(2)
              << calcularPrecio() << " (IVA: $" << calcularIva() << ")" << endl;
@@ -111,7 +115,30 @@ class Factura {
    public:
 
    void agregarProductos(Producto* _productos, double cantidad) {
-      _productos->cantidadVendida = cantidad;
+      _productos->setCantidadVendida(cantidad);
+      productos.push_back(_productos);
+   }
+
+   void CalcularFactura(){
+     for (Producto* p: productos){
+      totalSinIVA += p->calcularPrecio();
+      totalIVA += p->calcularIva();
+     }
+
+     totalFinal = totalIVA + totalSinIVA;
+   }
+
+   void MostrarFactura(){
+      cout << "==== Factura ====" << endl;
+      
+      for (Producto* p : productos){
+        p->mostrarDetalle();
+      }
+
+      cout << "=========================" << endl;
+      cout << "Subtotal: " << endl;
+      cout << "Total IVA: " << endl;
+      cout << "Total a pagar: " << totalFinal << setprecision(3) << endl;
    }
 
 };
