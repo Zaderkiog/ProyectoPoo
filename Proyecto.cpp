@@ -45,7 +45,7 @@ class Sistema {
 };
 
 class Producto {
-  private:
+  protected:
   string nombre;
   string tipo;
   bool porPeso;
@@ -89,6 +89,31 @@ class Carne : public Producto {
       return base;
      }
    }
+
+   void mostrarDetalle() const override{
+     Producto::mostrarDetalle();
+     if (tipoCarne == "res"){
+        cout << "Lugar de sacrifcio: " << lugarSacrificio << endl;
+     }
+     if (tipoCarne == "pescado"){
+       cout << "Lugar de procedencia: " << procedenciaPescado << endl;
+     }
+   }
+};
+
+class Factura {
+   private:
+   vector<Producto*> productos;
+   double totalSinIVA = 0;
+   double totalIVA = 0;
+   double totalFinal = 0;
+   int puntos = 0;
+   public:
+
+   void agregarProductos(Producto* _productos, double cantidad) {
+      _productos->cantidadVendida = cantidad;
+   }
+
 };
 
 class Productor{
