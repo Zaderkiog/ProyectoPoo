@@ -42,46 +42,33 @@ class Sistema {
   void sorteo(){}
 };
 
-class Fruta {
-
-};
-
-class Carne {
-  protected:
-     double libra;
-     int unidad;
-  public:
-};
-
-class Pollo: public Carne{
+class Producto {
   private:
-    string lugarSacrificio;
-};
+  string nombre;
+  string tipo;
+  bool porPeso;
+  bool noIva;
+  double precioUnitario;
+  double cantidadVendida;
 
-class Cerdo: public Carne{
- private:
-    string lugarSacrificio;
-};
+  public:
+  Producto(string _nombre, string _tipo, bool _porPeso, bool _noIva, double _precioUnitario, double _cantidadVendida): nombre(_nombre), 
+  tipo(_tipo), porPeso(_porPeso), noIva(_noIva), precioUnitario(_precioUnitario), cantidadVendida(_cantidadVendida){}
 
-class Pescado: public Carne{
- private:
-    string lugarProcedencia;
-};
+  virtual double calcularPrecio() const {
+    return precioUnitario * cantidadVendida;
+  }
+
+  virtual double calcularIva() const {
+    return noIva ? 0 : calcularPrecio() * 0.8;
+  }
+}
 
 
-class Verduras {
-
-};
-
-class ArtIndividuales {
-
-};
 
 class Productor{
   private:
-  vector<Pollo*> pollo;
-  vector<Cerdo*> cerdo;
-  vector<Pescado*> pescado;
+
   public:
   Productor(){}
 
