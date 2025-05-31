@@ -140,6 +140,7 @@ class Sistema {
 
 int main(){
  while(true){
+  setColor(4);
   cout <<"===================" << endl;
   setColor(9);
   cout << "This is the menu. " << endl;
