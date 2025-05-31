@@ -20,8 +20,10 @@ class Usuario: public Persona{
     Usuario(string _nombre, int _identi, string _direccion, int _puntos): Persona(_nombre, _identi, _direccion){}
 
     void setPuntos(int p){
-        p = puntos;
+        puntos = p;
     }
+
+    int getPuntos(){ return puntos; }
 };
 
 // Esto es para acumular puntos, no sé que nombre ponerle
@@ -62,9 +64,32 @@ class Producto {
   virtual double calcularIva() const {
     return noIva ? 0 : calcularPrecio() * 0.8;
   }
-}
 
+  virtual void mostrarDetalle() const {
+        cout << nombre << " - " << cantidadVendida << (porPeso ? " lb" : " u") << " - $" << fixed << setprecision(2)
+             << calcularPrecio() << " (IVA: $" << calcularIva() << ")" << endl;
+    }
+};
 
+class Carne : public Producto {
+  private:
+  string tipoCarne;
+  string lugarSacrificio;
+  string procedenciaPescado;
+  public:
+  Carne(string _nombre, string _tipo, bool _porPeso, bool _noIva, double _precioUnitario, 
+    double _cantidadVendida, string _tipoCarne, string _lugarSacrificio = "", string procedenciaPescado = ""): Producto(
+      _nombre, _tipo, _porPeso, _noIva, _precioUnitario, _cantidadVendida){}
+
+   double calcularPrecio() const override{
+     double base = Producto::calcularPrecio();
+     if (tipoCarne == "pescado" && procedenciaPescado == "mar"){
+       base += 0.5;
+     } else {
+      return base;
+     }
+   }
+};
 
 class Productor{
   private:
