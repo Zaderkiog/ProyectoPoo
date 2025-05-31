@@ -117,6 +117,12 @@ class Sistema {
    }
 };
 
+void gotoxy(int x, int y) {
+    COORD coord;
+    coord.X = x;
+    coord.Y = y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+};
 
    void display(int x, int y, int digito) {
 
@@ -140,13 +146,6 @@ class Sistema {
     }
 };
 
-void gotoxy(int x, int y) {
-    COORD coord;
-    coord.X = x;
-    coord.Y = y;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
-};
-
 int main(){
  int tecla;
  int seleccionada;
@@ -159,12 +158,19 @@ int main(){
 
         gotoxy(3, 3);
         if(seleccionada == 1){
-         setColor(5);
+         setColor(1);
+         cout << "1. Gestionar productos" << endl;
        }else {
-       setColor(4);
+       setColor(9);
        }
-        cout << "1. Gestionar productos" << endl;
-        cout << "2. Ingreso de productos al inventario" << endl;
+
+        gotoxy(3, 4);
+        if(seleccionada == 1){
+         setColor(1);
+          cout << "2. Ingreso de productos al inventario" << endl;
+       }else {
+       setColor(9);
+       }
         cout << "3. Carga masiva de productos desde archivo" << endl;
         cout << "4. Crear factura" << endl;
         cout << "5. Buscar producto por código y vender" << endl;
