@@ -97,8 +97,7 @@ class Sistema {
    double totalFinal = 0;
    int puntos = 0;
    public:
-       Sistema(Usuario* _cliente, vector<Producto*> _productos, double _totalSinIVA, double _totalIVA, double _totalFinal)
-        : cliente(_cliente), productos(_productos), totalSinIVA(_totalSinIVA), totalIVA(_totalIVA), totalFinal(_totalFinal) {}
+   Sistema(Usuario* _cliente)  : cliente(_cliente), totalSinIVA(0), totalIVA(0), totalFinal(0) {}
 
    void agregarProductos(Producto* _productos, double cantidad) {
       _productos->setCantidadVendida(cantidad);
