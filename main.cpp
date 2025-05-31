@@ -143,5 +143,6 @@ int main(){
   cout <<"===================" << endl;
   setColor(9);
   cout << "This is the menu. " << endl;
+  system("pause");
  }
 };
