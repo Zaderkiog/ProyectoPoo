@@ -176,7 +176,7 @@ int main(){
                 setColor(1); 
                 cout << "> " << opciones[i] << endl;
             } else {
-                setColor(10); 
+                setColor(2); 
                 cout << "  " << opciones[i] << endl;
             }
         }
