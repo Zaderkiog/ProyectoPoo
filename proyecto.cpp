@@ -157,7 +157,7 @@ int main(){
         "2. Ingreso de productos al inventario",
         "3. Carga masiva de productos desde archivo",
         "4. Crear factura",
-        "5. Buscar producto por código y vender",
+        "5. Buscar producto por codigo y vender",
         "6. Crear reporte de inventario en archivo",
         "7. Visualizar usuarios y puntos",
         "8. Realizar sorteo con clientes por puntos",
