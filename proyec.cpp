@@ -167,7 +167,7 @@ int main(){
 
     while (true) {
         system("cls");
-        setColor(11);
+        setColor(12);
         cout << "==== MENU PRINCIPAL ====" << endl;
 
         for (int i = 0; i < numOpciones; ++i) {
@@ -200,13 +200,49 @@ int main(){
         // Enter
         else if (tecla == 13) {
             system("cls");
-            cout << "Seleccionaste: " << opciones[seleccionada] << endl;
-            cout << "Presiona cualquier tecla para volver al menú..." << endl;
-            getch();
-        }
-        // Tecla '0' para salir
-        else if (tecla == '0') {
+          switch(seleccionada){
+            case 0: {
+               cout << "Haz seleccionado gestionar productos. " << endl;
+               system("pause");
+               break;
+
+            }
+            case 1: {
+               cout << "" << endl;
+               break;
+            }
+            case 2: {
             break;
+
+            }
+            case 3: {
+            break;  
+            }
+            case 4: {
+            break;  
+            }
+            case 5: {
+            break;  
+            }
+            case 6: {
+            break;  
+            }
+            default: {
+              cout << "Esa opción no existe" << endl;
+            }
+
+          }
+        }
+        else if (tecla == '0') {
+        system("cls");
+        cout << "Saliendo";
+        for (int i = 0; i < 3; ++i) {
+           cout << ".";
+           cout.flush(); 
+           Sleep(500);   
+         }
+        cout << endl;
+        break;
         }
     }
 
