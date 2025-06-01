@@ -187,17 +187,16 @@ int main(){
 
         tecla = getch();
 
-        // Flecha arriba
         if (tecla == 72) {
             seleccionada--;
             if (seleccionada < 0) seleccionada = numOpciones - 1;
         }
-        // Flecha abajo
+  
         else if (tecla == 80) {
             seleccionada++;
             if (seleccionada >= numOpciones) seleccionada = 0;
         }
-        // Enter
+
         else if (tecla == 13) {
             system("cls");
           switch(seleccionada){
