@@ -22,7 +22,7 @@ class Producto {
   double cantidadVendida;
 
   public:
-  Producto(string _nombre, string _tipo, bool _porPeso, bool _noIva, double _precioUnitario, double _cantidadVendida): nombre(_nombre), 
+  Producto(string _nombre, string _tipo, bool _porPeso, bool _noIva, double _precioUnitario, double _cantidadVendida): nombre(_nombre),
   tipo(_tipo), porPeso(_porPeso), noIva(_noIva), precioUnitario(_precioUnitario), cantidadVendida(_cantidadVendida){}
 
   virtual double calcularPrecio() const {
@@ -49,7 +49,7 @@ class Carne : public Producto {
   string lugarSacrificio;
   string procedenciaPescado;
   public:
-  Carne(string _nombre, string _tipo, bool _porPeso, bool _noIva, double _precioUnitario, 
+  Carne(string _nombre, string _tipo, bool _porPeso, bool _noIva, double _precioUnitario,
     double _cantidadVendida, string _tipoCarne, string _lugarSacrificio = "", string procedenciaPescado = ""): Producto(
       _nombre, _tipo, _porPeso, _noIva, _precioUnitario, _cantidadVendida){}
 
@@ -103,7 +103,7 @@ class Sistema {
 
    void MostrarFactura(){
       cout << "==== Factura ====" << endl;
-      
+
       for (Producto* p : productos){
         p->mostrarDetalle();
       }
@@ -124,7 +124,7 @@ void gotoxy(int x, int y) {
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 };
 
-   void display(int x, int y, int digito) {
+/*void display(int x, int y, int digito) {
 
     const char* digitos[10][5] = {
         {" **** ", "*    *", "*    *", "*    *", " **** "}, // 0
@@ -144,52 +144,71 @@ void gotoxy(int x, int y) {
         gotoxy(x, y + i);
         cout << digitos[digito][i];
     }
-};
+};*/
 
 int main(){
  int tecla;
- int seleccionada;
+ int seleccionada = 0;
  int opcion;
+ 
+    const int numOpciones = 10;
+    string opciones[numOpciones] = {
+        "1. Gestionar productos",
+        "2. Ingreso de productos al inventario",
+        "3. Carga masiva de productos desde archivo",
+        "4. Crear factura",
+        "5. Buscar producto por código y vender",
+        "6. Crear reporte de inventario en archivo",
+        "7. Visualizar usuarios y puntos",
+        "8. Realizar sorteo con clientes por puntos",
+        "9. Acciones restringidas por clave",
+        "10. Ver total vendido y ganancias netas"
+    };
+
     while (true) {
         system("cls");
         setColor(11);
         cout << "==== MENU PRINCIPAL ====" << endl;
-        setColor(9);
 
-        gotoxy(3, 3);
-        if(seleccionada == 1){
-         setColor(1);
-         cout << "1. Gestionar productos" << endl;
-       }else {
-       setColor(9);
-       }
+        for (int i = 0; i < numOpciones; ++i) {
+            gotoxy(3, 3 + i);
+            if (i == seleccionada) {
+                setColor(1); 
+                cout << "> " << opciones[i] << endl;
+            } else {
+                setColor(10); 
+                cout << "  " << opciones[i] << endl;
+            }
+        }
 
-        gotoxy(3, 4);
-        if(seleccionada == 1){
-         setColor(1);
-          cout << "2. Ingreso de productos al inventario" << endl;
-       }else {
-       setColor(9);
-       }
-        cout << "3. Carga masiva de productos desde archivo" << endl;
-        cout << "4. Crear factura" << endl;
-        cout << "5. Buscar producto por código y vender" << endl;
-        cout << "6. Crear reporte de inventario en archivo" << endl;
-        cout << "7. Visualizar usuarios y puntos" << endl;
-        cout << "8. Realizar sorteo con clientes por puntos" << endl;
-        cout << "9. Acciones restringidas por clave" << endl;
-        cout << "10. Ver total vendido y ganancias netas" << endl;
+        gotoxy(3, 3 + numOpciones);
+        setColor(12);
         cout << "0. Salir" << endl;
 
-    Sleep(50);
-    tecla = getch();
+        tecla = getch();
 
-    if(tecla == 72){
-        seleccionada--;
-    } else if(tecla == 80){
-       seleccionada++;
-    } else if(tecla == 13){
-        display(30, 5, seleccionada);
+        // Flecha arriba
+        if (tecla == 72) {
+            seleccionada--;
+            if (seleccionada < 0) seleccionada = numOpciones - 1;
+        }
+        // Flecha abajo
+        else if (tecla == 80) {
+            seleccionada++;
+            if (seleccionada >= numOpciones) seleccionada = 0;
+        }
+        // Enter
+        else if (tecla == 13) {
+            system("cls");
+            cout << "Seleccionaste: " << opciones[seleccionada] << endl;
+            cout << "Presiona cualquier tecla para volver al menú..." << endl;
+            getch();
+        }
+        // Tecla '0' para salir
+        else if (tecla == '0') {
+            break;
+        }
     }
-    }
+
+    return 0;
 }
